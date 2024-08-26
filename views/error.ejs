@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<body>
+    <h1>Error</h1>
+    <h2><%= error.message || 'Algo salió mal' %></h2>
+    <h3>Status: <%= error.status || 500 %></h3>
+    <pre><%= error.stack %></pre>
+</body>
+</html>

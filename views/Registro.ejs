@@ -1,0 +1,28 @@
+<%- include('layout/header') %>
+<link rel="stylesheet" href="/css/usuarios.css">
+<h1>Registro de Usuarios    </h1>
+<body>
+    <div class="container">
+        <div class="menu">
+            <form method="post" class="form-container">
+                <input type="text" placeholder="Nombre" name="nombre" required>
+                <input type="text" placeholder="Nombre de usuario" name="usuario" required>
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Contraseña" name="clave" required>
+                <select name="rol">
+                    <option value="usuario">Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+                <button type="submit">Registrarse</button>
+            </form>
+            <a href="/usuarios">Ingresar al sistema</a>
+        </div>
+    </div>
+    <div class="footer">
+        Integrantes:<br>
+        Br. Miguel Suarez. CI. V-28.206.469<br>
+        Profesor: Yerson Gonzalez<br>
+        Materia: Backend
+    </div>
+</body>
+</html>

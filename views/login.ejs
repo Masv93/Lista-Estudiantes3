@@ -1,0 +1,101 @@
+<%- include('layout/header') %>
+<link rel="stylesheet" href="/css/usuarios.css">
+<body>
+    <class="container-row">
+
+        <div class="container-row">
+            <div class="menu">
+                <% if(user.rol==="admin"){%>
+                <h1>Bienvenido, administrador:  <%= user.nombre %></h1>
+                <h3>Rol: <%= user.rol %></h3>
+
+                <a href="/students">Estudiantes</a>
+                <%     }else{%>
+                    <h1>Bienvenido, editor: <%= user.nombre %></h1>
+                <h3>Rol: <%= user.rol %></h3>
+                <%   } %>      
+            </div>
+               <div class="content">
+        </div>
+          <!-- Formulario para Buscar Estudiantes por Nombre -->
+    <div class="form-container">
+        <h2>Buscar Estudiantes por Nombre</h2>
+        <form id="search-form" onsubmit="searchStudent(event)">
+            <label for="search-name">Buscar por nombre:</label>
+            <input type="text" id="search-name" name="nombre" placeholder="Nombre del Estudiante">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+       <!-- Ajuste del Formulario para Buscar por Carrera -->
+       <div class="form-container">
+        <h2>Buscar por Carrera</h2>
+        <form id="search-career-form" onsubmit="searchCareer(event)">
+            <label for="search-career">Buscar por carrera:</label>
+            <input type="text" id="search-career" name="carrera" placeholder="Carrera">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <h2>Contar Estudiantes</h2>
+        <a href="/students/count">Mostrar Total de Estudiantes</a>
+    </div>
+
+    <ul id="students-list">
+        <h2>Mostrar Estudiantes</h2>
+        <% students.forEach(student => { %>
+            <li>
+                <div class="container">
+                    <p>ID: <%= student.id %> - Nombre: <%= student.nombre %></p>
+                    <p>Edad: <%= student.edad %> - Carrera: <%= student.carrera %></p>
+                </div>
+
+                <div>
+                    <button class="edit-button" onclick="editStudent('<%= student.id %>', '<%= student.nombre %>', '<%= student.edad %>', '<%= student.carrera %>')">Editar</button>
+                    <button class="delete-button" onclick="deleteStudent('<%= student.id %>')">Eliminar</button>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+
+
+    <div class="footer">
+        Integrantes:<br>
+        Br. Miguel Suarez. CI. V-28.206.469<br>
+        Profesor: Yerson Gonzalez<br>
+        Materia: Backend
+    </div>
+
+    <script>
+        function searchStudent(event) {
+            event.preventDefault(); // Evita el envío del formulario tradicional
+            const nombre = document.getElementById('search-name').value;
+            if (nombre) {
+                const url = `/students/search/${encodeURIComponent(nombre)}`; // Construye la URL
+                window.location.href = url; // Redirige a la URL de búsqueda
+            } else {
+                alert('Por favor, ingresa un nombre para buscar.');
+            }
+        }
+
+        function searchCareer(event) {
+            event.preventDefault(); // Evita el envío del formulario tradicional
+            const carrera = document.getElementById('search-career').value;
+            if (carrera) {
+                const url = `/students/carrera/${encodeURIComponent(carrera)}`; // Construye la URL con la carrera
+                window.location.href = url; // Redirige a la URL de búsqueda por carrera
+            } else {
+                alert('Por favor, ingresa una carrera para buscar.');
+            }
+        }
+    </script>
+    </div>
+    <div class="footer">
+        Integrantes:<br>
+        Br. Miguel Suarez. CI. V-28.206.469<br>
+        Profesor: Yerson Gonzalez<br>
+        Materia: Backend
+    </div>
+</body>
+</html>

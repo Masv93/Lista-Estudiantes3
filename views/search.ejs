@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Estudiantes</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Fondo azul claro */
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #005f99; /* Azul oscuro */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #e0f7fa; /* Fondo azul muy claro */
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #b2ebf2; /* Borde azul claro */
+            border-radius: 5px;
+        }
+        p {
+            color: #d32f2f; /* Rojo para mensajes de error o atención */
+        }
+        a {
+            text-decoration: none;
+            color: #005f99; /* Azul oscuro */
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        a:hover {
+            color: #ff7043; /* Color anaranjado al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultados de Búsqueda</h1>
+    <% if (students.length > 0) { %>
+        <ul>
+            <% students.forEach(student => { %>
+                <li><%= student.nombre %> - <%= student.carrera %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No se encontraron estudiantes con ese nombre.</p>
+    <% } %>
+    <a href="/students">Regresar</a>
+    <div class="footer">
+        Integrantes:<br>
+        Br. Miguel Suarez. CI. V-28.206.469<br>
+        Profesor: Yerson Gonzalez<br>
+        Materia: Backend
+    </div>
+</body>
+</html>
